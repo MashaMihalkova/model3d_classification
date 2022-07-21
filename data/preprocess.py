@@ -15,19 +15,19 @@ def find_neighbor(faces, faces_contain_this_vertex, vf1, vf2, except_face):
     return except_face
 
 if __name__ == '__main__':
-    root = Path('D:\\work2\\classification_3d_models\\test_augmentation_on_stairs\\')
-    root_augm = Path('D:\\work2\\classification_3d_models\\test_augmentation_on_stairs_npz\\')
-    new_root = Path('D:\\work2\\classification_3d_models\\test_augmentation_on_stairs_npz')
+    root = Path('D:\\work2\\classification_3d_models\\data_3d\\augm_data_obj\\data_obj\\')
+    root_augm = Path('D:\\work2\\classification_3d_models\\data_3d\\augm_data_npz\\')
+    new_root = Path('D:\\work2\\classification_3d_models\\data_3d\\augm_data_npz')
     # max_faces = 96
-    shape_list = sorted(list(root.glob('*/*.fbx')))
+    shape_list = sorted(list(root.glob('*/*.obj')))
     # shape_list = sorted(list(root.glob('*/*.npz')))
     ms = pymeshlab.MeshSet()
 
     for shape_dir in track(shape_list):
         out_dir = new_root / shape_dir.relative_to(root).with_suffix('.npz')
-        # if out_dir.exists():
-        #     continue
-        # out_dir.parent.mkdir(parents=True, exist_ok=True)
+        if out_dir.exists():
+            continue
+        out_dir.parent.mkdir(parents=True, exist_ok=True)
 
         ms.clear()
         # load mesh
@@ -42,7 +42,7 @@ if __name__ == '__main__':
         vertices = mesh.vertex_matrix()
         faces = mesh.face_matrix()
         max_faces = faces.shape[0]
-        if faces.shape[0] > 500:
+        if faces.shape[0] > max_faces:
             print("Model with more than {} faces ({}): {}".format(max_faces, faces.shape[0], out_dir))
             continue
 
@@ -90,4 +90,4 @@ if __name__ == '__main__':
         faces = np.concatenate([centers, corners, face_normal], axis=1)
         neighbors = np.array(neighbors)
 
-        # np.savez(str(out_dir), faces=faces, neighbors=neighbors)
+        np.savez(str(out_dir), faces=faces, neighbors=neighbors)

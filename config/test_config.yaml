@@ -3,12 +3,20 @@ cuda_devices: '0'
 
 # dataset
 dataset:
-  data_root: 'D:\work2\classification_3d_models\dataset\data_classif\test'
+#  data_root: 'D:\work2\classification_3d_models\dataset\data_classif\test'
+  data_root: 'D:\\work2\\classification_3d_models\\data_3d\\augm_data_npz\\split\\test'
   augment_data: false
-  max_faces: 500
+  max_faces: 10000
+
+# dataset
+dataset_full:
+#  data_root: 'D:\work2\classification_3d_models\dataset\data_classif\test'
+  data_root: 'D:\\work2\\classification_3d_models\\MeshNet-70f9115a121cef71f62d774088771337c3beaf4b\\MeshNet-70f9115a121cef71f62d774088771337c3beaf4b\\data_pred_full'
+  augment_data: false
+  max_faces: 10000
 
 # model
-load_model: 'D:\work2\classification_3d_models\weights\1.pkl'
+load_model: 'D:\work2\classification_3d_models\weights\3.pkl'
 
 # MeshNet
 MeshNet:
@@ -19,8 +27,8 @@ MeshNet:
     aggregation_method: 'Concat'  # Concat/Max/Average
   mask_ratio: 0.95
   dropout: 0.5
-  num_classes: 7
+  num_classes: 9
 
 # test config
-batch_size: 10
+batch_size: 1
 retrieval_on: true

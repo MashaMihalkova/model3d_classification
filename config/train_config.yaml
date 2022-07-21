@@ -3,8 +3,9 @@ cuda_devices: '0'   # multi-gpu training is available
 
 # dataset
 dataset:
-  data_root: 'D:\work2\classification_3d_models\dataset\data_classif\train'
-  max_faces: 500
+#  data_root: 'D:\work2\classification_3d_models\dataset\data_classif\train'
+  data_root: 'D:\\work2\\classification_3d_models\\data_3d\\augm_data_npz\\split\\train'
+  max_faces: 10000
   augment_data: true
   jitter_sigma: 0.01
   jitter_clip: 0.05
@@ -21,14 +22,14 @@ MeshNet:
     aggregation_method: 'Concat'  # Concat/Max/Average
   mask_ratio: 0.95
   dropout: 0.5
-  num_classes: 7
+  num_classes: 9
 
 # train
 seed: 0
 lr: 0.0006
 momentum: 0.9
 weight_decay: 0.0005
-batch_size: 10
+batch_size: 2
 max_epoch: 10
 optimizer: 'adamw' # sgd/adamw
 scheduler: 'cos' # step/cos

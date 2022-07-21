@@ -1,7 +1,7 @@
 import re
-
-from Scene import Scene
-from Mesh import Mesh
+from obj_parser.Scene import Scene
+# from Scene import Scene
+from obj_parser.Mesh import Mesh
 
 _debug = False
 

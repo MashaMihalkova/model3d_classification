@@ -16,7 +16,7 @@ from data.preprocess import find_neighbor
 #     'keyboard': 35, 'bookshelf': 36,  'bench': 37, 'table': 38, 'lamp': 39
 # }
 type_to_index_map = {
-    "l_beam":0, "pipes":1, "clamps":2, "handrails":3, "ladder":4, "stairs":5, "ladder_cage":6
+    "l_beam":0, "pipes":1, "clamps":2, "handrails":3, "ladder":4, "stairs":5, "ladder_cage":6, "platforms":7,"profile":8
 }
 
 
